@@ -1,0 +1,62 @@
+package com.example.hr.domain;
+
+import java.util.Map;
+import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
+
+import com.example.ddd.ValueObject;
+
+// Value-Object -> immutable: 1) final class, final attributes
+@ValueObject
+public final class TcKimlikNo {
+	private final static Map<String, TcKimlikNo> Cache = new ConcurrentHashMap<>();
+	private final String value;
+
+	private TcKimlikNo(String value) {
+		this.value = value;
+	}
+
+	public static TcKimlikNo of(String value) {
+		// validation
+		if (!isValid(value))
+			throw new IllegalArgumentException("%s is not a valid identity no.".formatted(value));
+		// caching
+		var cachedIdentity = Cache.get(value);
+		if (Objects.isNull(cachedIdentity)) {
+			cachedIdentity = new TcKimlikNo(value);
+			Cache.put(value, cachedIdentity);
+		}
+		return cachedIdentity;
+	}
+
+	private static boolean isValid(String value) {
+		return true;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(value);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TcKimlikNo other = (TcKimlikNo) obj;
+		return Objects.equals(value, other.value);
+	}
+
+	@Override
+	public String toString() {
+		return "TcKimlikNo [value=" + value + "]";
+	}
+
+}

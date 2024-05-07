@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.example.hr.domain.TcKimlikNo"/>
+    <fullyQualifiedTypeName name="java.util.Objects"/>
+    <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
+    <fullyQualifiedTypeName name="java.util.Base64"/>
+    <fullyQualifiedTypeName name="com.example.hr.domain.Photo"/>
+    <fullyQualifiedTypeName name="java.lang.annotation.Inherited"/>
+    <fullyQualifiedTypeName name="com.example.ddd.ValueObject"/>
+    <fullyQualifiedTypeName name="com.example.hr.domain.FullName"/>
+    <fullyQualifiedTypeName name="com.example.hr.domain.Money"/>
+    <fullyQualifiedTypeName name="com.example.hr.domain.Employee"/>
+    <fullyQualifiedTypeName name="com.example.hr.domain.FiatCurrency"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.example.hr.domain.BirthYear"/>
+    <fullyQualifiedTypeName name="com.example.hr.domain.JobStyle"/>
+</qualifiedTypeNameHistroy>

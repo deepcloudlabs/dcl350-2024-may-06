@@ -1,0 +1,8 @@
+Domain -> Sub-domain(s)
+          i. core         -> complex -> modeling
+         ii. generic      -> complex
+        iii. supporting   -> simple
+          
+          Analysis                  Design               
+Domain -> Sub-domain -> modeling -> BC (Bounded Context) -> implementation -> Microservices
+                      1           1 Ubiquitous Language   1                 *
