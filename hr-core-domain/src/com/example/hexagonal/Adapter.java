@@ -11,5 +11,5 @@ import java.lang.annotation.Target;
 @Retention(RUNTIME)
 @Target(TYPE)
 public @interface Adapter {
-
+     Class<?> value() default Class.class;
 }

@@ -2,9 +2,7 @@ package com.example.hr.service;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.hr.application.HrApplication;
@@ -14,8 +12,6 @@ import com.example.hr.dto.request.HireEmployeeRequest;
 import com.example.hr.dto.response.EmployeeResponse;
 import com.example.hr.dto.response.HireEmployeeResponse;
 import com.example.hr.dto.response.PhotoResponse;
-
-import jakarta.persistence.LockModeType;
 
 @Service
 public class HrService {
