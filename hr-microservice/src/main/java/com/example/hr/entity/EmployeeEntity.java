@@ -22,10 +22,12 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="employees")
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 public class EmployeeEntity {
 	@Id
@@ -40,7 +42,7 @@ public class EmployeeEntity {
 	private String lastName; 
 	@Iban
 	private String iban; 
-	@Min(1950) @Max(2008) private double salary;
+	@Min(20_000) private double salary;
 	@Enumerated(EnumType.ORDINAL)
 	@NotNull private FiatCurrency currency;
 	@ElementCollection
@@ -48,6 +50,7 @@ public class EmployeeEntity {
 	@Enumerated(EnumType.STRING)
 	@NotNull private JobStyle jobStyle; 
 	@Column(name="byear")
+	@Min(1950) @Max(2008)
 	private int birthYear;
 	@Lob
 	@Column(columnDefinition = "longblob")
