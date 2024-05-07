@@ -14,6 +14,10 @@ public final class Iban {
 		this.value = value;
 	}
 
+	public String getValue() {
+		return value;
+	}
+
 	public static Iban of(String value) {
 		if (!isValid(value))
 			throw new IllegalArgumentException("%s is not a valid iban.".formatted(value));
