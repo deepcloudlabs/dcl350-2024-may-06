@@ -3,14 +3,10 @@ package com.example;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse.BodyHandlers;
 import java.net.http.WebSocket;
 import java.net.http.WebSocket.Listener;
-import java.util.List;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class BinanceWebsocketClient {
 	private static final String BINANCE_WS_API = "wss://stream.binance.com:9443/ws/btcusdt@trade";
