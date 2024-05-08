@@ -3,7 +3,10 @@ package com.example.lottery.dto.response;
 import java.util.List;
 
 public class LotteryResponse {
-	private final List<LotteryModel> numbers;
+	private List<LotteryModel> numbers;
+
+	public LotteryResponse() {
+	}
 
 	public LotteryResponse(List<LotteryModel> numbers) {
 		this.numbers = numbers;
@@ -11,6 +14,10 @@ public class LotteryResponse {
 
 	public List<LotteryModel> getNumbers() {
 		return numbers;
+	}
+
+	public void setNumbers(List<LotteryModel> numbers) {
+		this.numbers = numbers;
 	}
 
 }

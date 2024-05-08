@@ -1,5 +1,6 @@
 package com.example.lottery.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,15 +19,16 @@ import com.example.lottery.service.LotteryService;
 @Validated
 public class LotteryRestController {
 	private final LotteryService lotteryService;
-	
-	
-	public LotteryRestController(LotteryService lotteryService) {
+	private final int serverPort;
+
+	public LotteryRestController(LotteryService lotteryService, @Value("${server.port}") int serverPort) {
 		this.lotteryService = lotteryService;
+		this.serverPort = serverPort;
 	}
 
-
-	@GetMapping(params= {"column"})
+	@GetMapping(params = { "column" })
 	public LotteryResponse drawLottery(@RequestParam int column) {
+		System.err.println("Received a new request at port %d".formatted(serverPort));
 		return lotteryService.draw(column);
 	}
 }
