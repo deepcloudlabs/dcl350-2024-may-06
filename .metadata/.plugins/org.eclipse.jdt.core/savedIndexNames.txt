@@ -18,7 +18,6 @@ INDEX VERSION 1.134+C:\var\workspace\github\dcl350-2024-may-06\.metadata\.plugin
 180365224.index
 2777099222.index
 1405350482.index
-1369426798.index
 1566647984.index
 2340153104.index
 1780312007.index
@@ -32,7 +31,6 @@ INDEX VERSION 1.134+C:\var\workspace\github\dcl350-2024-may-06\.metadata\.plugin
 3141683287.index
 1772949731.index
 538312296.index
-6487493.index
 1566810045.index
 1021398442.index
 3941651558.index

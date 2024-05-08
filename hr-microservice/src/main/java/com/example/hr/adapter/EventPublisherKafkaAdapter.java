@@ -1,6 +1,7 @@
 package com.example.hr.adapter;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 @Adapter(EventPublisher.class)
+@ConditionalOnProperty(name = "eventPublisher", havingValue = "kafka")
 public class EventPublisherKafkaAdapter implements EventPublisher<HrEvent> {
 	private final KafkaTemplate<String, String> kafkaTemplate;
 	private final ObjectMapper objectMapper;
