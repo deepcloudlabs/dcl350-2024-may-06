@@ -46,7 +46,6 @@ public class HrController {
     }
 	
     @PostMapping
-    @Transactional
     public HireEmployeeResponse hireEmployee(@RequestBody @Validated HireEmployeeRequest request) {
     	return hrService.hireEmployee(request);
     }
