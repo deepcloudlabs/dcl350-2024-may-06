@@ -1,0 +1,9 @@
+query Jack {
+  employeeById(identity: "30823067942") {
+    identity
+    departments
+    firstName
+    lastName
+    jobStyle
+  }
+}

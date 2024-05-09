@@ -1,7 +1,6 @@
 package com.example.hr.service;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +14,6 @@ import com.example.hr.dto.response.HireEmployeeResponse;
 import com.example.hr.dto.response.PhotoResponse;
 
 @Service
-@ConditionalOnProperty(name="persistenceStrategy", havingValue = "jpa")
 public class HrService {
 	private final HrApplication hrApplication;
 	private final ModelMapper modelMapper;

@@ -1,9 +1,7 @@
 package com.example.hr.service;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.stereotype.Service;
 
 import com.example.hr.application.HrApplication;
 import com.example.hr.domain.Employee;
@@ -13,12 +11,12 @@ import com.example.hr.dto.response.EmployeeResponse;
 import com.example.hr.dto.response.HireEmployeeResponse;
 import com.example.hr.dto.response.PhotoResponse;
 
-@Service
-@ConditionalOnProperty(name="persistenceStrategy", havingValue = "mongodb")
+//@Service
+//@ConditionalOnProperty(name="persistenceStrategy", havingValue = "mongodb")
 public class NtHrService {
 	private final HrApplication hrApplication;
 	private final ModelMapper modelMapper;
-	
+
 	public NtHrService(HrApplication hrApplication, ModelMapper modelMapper) {
 		this.hrApplication = hrApplication;
 		this.modelMapper = modelMapper;
@@ -27,10 +25,9 @@ public class NtHrService {
 	@Cacheable
 	public EmployeeResponse getEmployeeById(String identity) {
 		var entity = hrApplication.getEmployee(TcKimlikNo.of(identity))
-				                  .orElseThrow(() -> new IllegalArgumentException("Employee[%s] not found!".formatted(identity)));
+				.orElseThrow(() -> new IllegalArgumentException("Employee[%s] not found!".formatted(identity)));
 		return modelMapper.map(entity, EmployeeResponse.class);
 	}
-
 
 	public PhotoResponse getEmployeePhoto(String identity) {
 		var entity = hrApplication.getEmployee(TcKimlikNo.of(identity))

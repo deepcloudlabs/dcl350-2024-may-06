@@ -23,6 +23,7 @@ public class RestErrorHandler {
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public RestErrorMessage handleIllegalArgumentException(IllegalArgumentException e) {
 		System.err.println(e.getClass().getName());
+		e.printStackTrace();
 		return new RestErrorMessage(e.getMessage(), 100, "5b0d4d5e-f161-11ec-8ea0-0242ac120002");
 	}
 	
@@ -30,6 +31,7 @@ public class RestErrorHandler {
 	@ResponseStatus(HttpStatus.BAD_GATEWAY)
 	public RestErrorMessage handleRuntimeException(RuntimeException e) {
 		System.err.println(e.getClass().getName());
+		e.printStackTrace();
 		return new RestErrorMessage(e.getMessage());
 	}
 
@@ -60,4 +62,3 @@ public class RestErrorHandler {
 		return new RestErrorMessage(violations);
 	}
 }
-
