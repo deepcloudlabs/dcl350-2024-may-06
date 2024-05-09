@@ -10,8 +10,6 @@ import com.example.hr.domain.BirthYear;
 import com.example.hr.domain.Employee;
 import com.example.hr.domain.TcKimlikNo;
 
-import jakarta.annotation.PostConstruct;
-
 @Configuration
 @ConditionalOnProperty(name="persistenceStrategy", havingValue = "mongodb")
 public class ModelMapperMongoConfig {
