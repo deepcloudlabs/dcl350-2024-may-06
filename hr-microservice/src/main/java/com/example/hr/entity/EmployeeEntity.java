@@ -55,4 +55,6 @@ public class EmployeeEntity {
 	@Lob
 	@Column(columnDefinition = "longblob")
 	@NotNull private byte[] photo;
+	//@Version
+	//private int versiyon;
 }

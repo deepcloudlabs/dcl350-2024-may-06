@@ -3,6 +3,7 @@ package com.example.hr.service;
 import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.hr.application.HrApplication;
@@ -37,7 +38,7 @@ public class HrService {
 		return new PhotoResponse(entity.getPhoto().toBase64());
 	}
 
-	@Transactional
+	@Transactional(propagation = Propagation.MANDATORY)
 	public HireEmployeeResponse hireEmployee(HireEmployeeRequest request) {
 		var employee = modelMapper.map(request, Employee.class);
 		var persistedEmployee = hrApplication.hireEmployee(employee);

@@ -22,12 +22,14 @@ public class RestErrorHandler {
 	@ExceptionHandler(IllegalArgumentException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public RestErrorMessage handleIllegalArgumentException(IllegalArgumentException e) {
+		System.err.println(e.getClass().getName());
 		return new RestErrorMessage(e.getMessage(), 100, "5b0d4d5e-f161-11ec-8ea0-0242ac120002");
 	}
 	
 	@ExceptionHandler(RuntimeException.class)
 	@ResponseStatus(HttpStatus.BAD_GATEWAY)
 	public RestErrorMessage handleRuntimeException(RuntimeException e) {
+		System.err.println(e.getClass().getName());
 		return new RestErrorMessage(e.getMessage());
 	}
 
@@ -35,6 +37,7 @@ public class RestErrorHandler {
 	@ExceptionHandler(ConstraintViolationException.class)
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
 	public RestErrorMessage handleConstraintViolationException(ConstraintViolationException e) {
+		System.err.println(e.getClass().getName());
 		var violations = e.getConstraintViolations().stream().map(ConstraintViolation::getMessage)
 				.collect(Collectors.joining("|"));
 		return new RestErrorMessage(violations);
@@ -43,6 +46,7 @@ public class RestErrorHandler {
 	@ExceptionHandler(MappingException.class)
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
 	public RestErrorMessage MappingException(MappingException e) {
+		System.err.println(e.getClass().getName());
 		var message = e.getErrorMessages().stream().map(ErrorMessage::getMessage).collect(Collectors.joining(","));
 		return new RestErrorMessage(message);
 	}
@@ -50,8 +54,10 @@ public class RestErrorHandler {
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
 	public RestErrorMessage handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+		System.err.println(e.getClass().getName());
 		var violations = e.getBindingResult().getAllErrors().stream().map(ObjectError::getDefaultMessage)
 				.collect(Collectors.joining("|"));
 		return new RestErrorMessage(violations);
 	}
 }
+

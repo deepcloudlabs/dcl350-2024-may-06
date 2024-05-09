@@ -1,5 +1,6 @@
 package com.example.hr.controller;
 
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -45,6 +46,7 @@ public class HrController {
     }
 	
     @PostMapping
+    @Transactional
     public HireEmployeeResponse hireEmployee(@RequestBody @Validated HireEmployeeRequest request) {
     	return hrService.hireEmployee(request);
     }

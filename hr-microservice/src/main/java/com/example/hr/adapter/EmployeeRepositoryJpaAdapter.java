@@ -4,6 +4,8 @@ import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.hexagonal.Adapter;
@@ -30,7 +32,8 @@ public class EmployeeRepositoryJpaAdapter implements EmployeeRepository {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(isolation = Isolation.REPEATABLE_READ, propagation = Propagation.REQUIRES_NEW )
+	//@Lock(LockModeType.PESSIMISTIC_WRITE)
 	public Employee persistEmployee(Employee employee) {
 		var entity = modelMapper.map(employee, EmployeeEntity.class);
 		return modelMapper.map(empRepo.save(entity),Employee.class);
