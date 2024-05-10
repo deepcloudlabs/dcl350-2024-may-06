@@ -1,15 +1,14 @@
 package com.example.crm.service;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.example.crm.document.CustomerDocument;
 import com.example.crm.repository.CustomerDocumentRepository;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

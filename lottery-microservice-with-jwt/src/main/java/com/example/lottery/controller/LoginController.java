@@ -25,16 +25,17 @@ public class LoginController {
 	private JwtTokenProvider jwtTokenProvider;
 
 	@PostMapping
-	public String signin(@RequestBody @Validated WebUser webuser) {
+	public String signin(@RequestBody @Validated WebUser webUser) {
+		System.err.println(webUser);
 		try {
 			UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-					webuser.getUsername(), webuser.getPassword());
+					webUser.username(), webUser.password());
 			authMngr.authenticate(authToken);
-			return jwtTokenProvider.createToken(webuser.getUsername());
+			return jwtTokenProvider.createToken(webUser.username());
 		} catch (Exception e) {
-			System.err.println("Log in failed for user " + webuser.getUsername());
+			System.err.println("Log in failed for user " + webUser.username());
 		}
-		return "";
+		return "error";
 	}
 
 }

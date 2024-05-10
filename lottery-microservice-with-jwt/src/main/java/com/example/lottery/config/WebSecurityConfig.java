@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,7 +24,12 @@ public class WebSecurityConfig {
 
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http, UserDetailsService userDetailsService,AuthenticationManager authenticationManager) throws Exception {
-        http.csrf(csrf -> csrf.disable()).authorizeRequests(requests -> requests.antMatchers("/api/v1/login").permitAll().anyRequest().authenticated()).sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+		http.csrf(AbstractHttpConfigurer::disable)
+		    .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
+		                authorizationManagerRequestMatcherRegistry.requestMatchers("/login/**")
+		                                                          .permitAll()
+		                                                          .anyRequest().authenticated())
+		    .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 		http.authenticationManager(authenticationManager);
 		http.userDetailsService(userDetailsService);
 		http.addFilterBefore(new JwtTokenFilter(userDetailsService, secret),UsernamePasswordAuthenticationFilter.class);

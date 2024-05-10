@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.example.events.TradeEvent;
 
+@SuppressWarnings("deprecation")
 public class Exercise03 {
 
 	public static void main(String[] args) {
